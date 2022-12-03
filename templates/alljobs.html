@@ -1,0 +1,128 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<html>
+    <head>
+        <title>
+            Job Search
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <!-- CSS only -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+        <script>
+       function myFunction(id) {
+  var elem = document.getElementById(id),
+      text = elem.textContent || elem.innerText;
+
+  if (text == "Apply")
+    elem.innerHTML = "Applied";
+  else
+    elem.innerHTML = "Apply";
+}
+
+</script>
+    </head>
+    <body>
+        <!----------------header-------------------->
+        <section id="header">
+            <div class="menu-bar">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="navbar-brand" href="/"><img src="{% static 'images/logo.png' %}" width="130" height="70"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                      <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                          <a class="nav-link" href="alljobs">All Jobs <span class="sr-only">(current)</span></a>
+                        </li>
+
+                          {% if user.is_authenticated %}
+                          <li class="nav-item">
+                          <a class="nav-link "href="#">Hello,{{user.first_name}}</a>
+                          </li>
+                          <li class="nav-item">
+                          <a class="nav-link "href="accounts/logout">Logout</a>
+                        </li>
+                          {% else %}
+                          <li class="nav-item">
+                          <a class="nav-link" href="accounts/register">Register</a>
+                        </li>
+                        <li class="nav-item">
+
+                          <a class="nav-link "href="accounts/login">Login</a>
+                        </li>
+                          {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link " href="contact">Contact</a>
+                          </li>
+                      </ul>
+                    </div>
+                  </nav>
+            </div>
+
+        </section>
+         <form action="alljobs" method="get">
+        <div class="search-job text-center">
+            <input type="text" name="sskill" class="form-control" placeholder="search Keyword">
+            <input type="text" name="scompany" class="form-control" placeholder="company">
+            <input type="text" name="slocation" class="form-control" placeholder="location">
+            <input type="submit" class="btn btn-primary" value="Find Job">
+        </div>
+         </form>
+       <!------------Recent Jobs --------------->
+       <section id="jobs">
+        <div class="container">
+            <h5>RECENT UPDATES</h5>
+             {% for i in jobs1 %}
+            <div class="company-details">
+                <div class="job-update">
+
+                    <h4><b>{{i.jobtitle}}</b></h4>
+                    <p>{{i.companyname}}</p>
+                    <i class="fa fa-briefcase"></i><span>{{i.yearsofexp}} yrs</span><br>
+                    <i class="fas fa-rupee-sign"></i><span>{{i.salary}}Lacs PA</span><br>
+                    <i class="fa fa-map-marker"></i><span>{{i.location}}</span><br>
+                    <p>Skills <i class="fa fa-angle-double-right"></i>
+
+                        <small>{{i.skills}}</small>
+                    </p>
+                    <p>Description<i class="fa fa-angle-double-right"></i>
+                    {{i.JobDescp}}<a href="#">Read more</a></p>
+
+                </div>
+                <div class="apply-btn">
+                    <button type="button" class="btn btn-primary" onclick="myFunction(this.id)" id={{ forloop.counter }}>Apply</button>
+                </div>
+            </div>
+            {% endfor %}
+            <ul class="page-link text-center">
+                <li class="left-arrow">&#8592;</li>
+                <li class="active">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li class="right-arrow">&#8594;</li>
+                
+            </ul>
+        </div>
+       </section>
+
+       <!------------------Footer Section --------------------->
+       <section id="footer" class="text-center">
+           <img src="{% static 'images/jobsearchlogo1.PNG' %}" class="footer-image">
+           <p>Plese follow the website to get updated Job post</p>
+           <a href="#"><img src="{% static 'images/facebook.PNG' %}"></a>
+           <a href="#"><img src="{% static 'images/instagram.PNG' %}"></a>
+           <a href="#"><img src="{% static 'images/twitter.PNG' %}"></a>
+           <a href="#"><img src="{% static 'images/youtubelogo.PNG' %}"></a>
+           <hr>
+           <p>Thanks<i class="fa fa-heart"></i>Job Search</p>
+       </section>
+    </body>
+
+</html>

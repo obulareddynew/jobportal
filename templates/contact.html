@@ -1,0 +1,88 @@
+{% load static %}
+<html>
+    <head>
+        <title>
+            Job Search
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <!-- CSS only -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+
+    </head>
+    <body>
+        <section id="header">
+            <div class="menu-bar">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="navbar-brand" href="/"><img src="{% static 'images/logo.png' %}" width="130" height="70"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                      <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                          <a class="nav-link" href="alljobs">All Jobs <span class="sr-only">(current)</span></a>
+                        </li>
+
+                          {% if user.is_authenticated %}
+                          <li class="nav-item">
+                          <a class="nav-link "href="#">Hello,{{user.first_name}}</a>
+                          </li>
+                          <li class="nav-item">
+                          <a class="nav-link "href="accounts/logout">Logout</a>
+                        </li>
+                          {% else %}
+                          <li class="nav-item">
+                          <a class="nav-link" href="accounts/register">Register</a>
+                        </li>
+                        <li class="nav-item">
+
+                          <a class="nav-link "href="accounts/login">Login</a>
+                        </li>
+                          {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link " href="#">Contact</a>
+                          </li>
+                      </ul>
+                    </div>
+                  </nav>
+            </div>
+        </section>
+			<div class="jumbotron text-center">
+  <h1>ABOUT ME</h1>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Purpose</h3>
+      <p>Here we can promote jobs and search for resumes. we are an important part of almost every hiring procedure, and select efficiently will interpret into qualified candidates for moderately low cost</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Benefits</h3>
+      <p>we promotes employers brand. ...
+the time and cost to hire candidates reduces. ...
+Consolidation of candidate profile becomes easy. ...
+you gain a sense of visibility and effectiveness in your hiring process</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Importance</h3>
+      <p>Job portal is a website and is known as a bridge between an organization and job seekers. Creating job portals helps both – organizations and job seekers to connect and grow together. In simple words, suppose you have a vacancy in your organization, and for that, you craft an attractive job ad.</p>
+    </div>
+  </div>
+</div>
+             <section id="footer" class="text-center">
+           <img src="{% static 'images/jobsearchlogo1.PNG' %}" class="footer-image">
+           <p>Plese follow the website to get updated Job post</p>
+           <a href="#"><img src="{% static 'images/facebook.PNG' %}"></a>
+           <a href="#"><img src="{% static 'images/instagram.PNG' %}"></a>
+           <a href="#"><img src="{% static 'images/twitter.PNG' %}"></a>
+           <a href="https://www.youtube.com/channel/UCVsCVb6gxotx7CWj5ruNaFg/videos" target="_blank"><img src="{% static 'images/youtubelogo.PNG' %}"></a>
+           <hr>
+           <p>Thanks<i class="fa fa-heart"></i>Job Search</p>
+       </section>
+      </body>
+</html>

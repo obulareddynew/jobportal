@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{jobname}}</title>
+   <style>
+       .header {
+  padding: 5px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 20px;
+  position: sticky;
+
+  top:0px;
+  left:0px;
+  }
+
+  .footer {
+  padding: 5px;
+  bottom:0;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 20px;
+
+}
+   </style>
+</head>
+<body>
+<div class="header">
+  <h1>Header</h1>
+</div>
+{% block content %}
+{% endblock %}
+<div class="footer">
+  <h1>Footer</h1>
+</div>
+</body>
+</html>

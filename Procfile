@@ -1,0 +1,1 @@
+web: gunicorn ecart.wsgi:application --log-file -
